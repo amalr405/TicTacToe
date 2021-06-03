@@ -16,8 +16,9 @@ const Main = (props) => {
             <div onClick={alternator} className='tic' id='7'></div>
             <div onClick={alternator} className='tic' id='8'></div>
             <div onClick={alternator} className='tic' id='9'></div>   
+            <button id="reset" onClick={reload}>New Game</button>
          </div>
-         <button id="reset" onClick={reload}>New Game</button>
+         
         </div> 
     )
 }
@@ -25,7 +26,8 @@ const Main = (props) => {
 var a = 'X';
 var b = 'O';
 var c = 0,p=1;
-var current = a,cell;
+var current = a,cell,tru;
+var check = true;
 
 function reload(){
     window.location.reload();
@@ -35,16 +37,21 @@ function alternator(e){
     p++
 var target = e.target;
 var h = document.createElement('h1');
-if(target.innerText){
+if(target.innerText || c !=0){
     ;
-}else if(c !=0){
-    ;
-}else if(c==0 && p>=10){
-   
+} 
+ else if(c==0 && p==10 && check == true){
+   console.log(p)
      cell  = (current === a) ? current = b : current = a;
      h.innerText = cell;
      target.append(h)
+    tru = (checkwin(cell)===true)?true:'';
+    if(tru == true){
+     winnertag(cell) 
+     c++ 
+    } else{
      losertag();
+    }
 }
 else {
    
@@ -52,9 +59,9 @@ else {
  cell  = (current === a) ? current = b : current = a;
 h.innerText = cell;
 target.append(h)
-var tru = (checkwin(cell)===true)?true:'';
+ tru = (checkwin(cell)===true)?true:'';
  
-if(tru == true){
+if(tru == true && check == true){
      winnertag(cell) 
      c++ 
 } 
@@ -76,6 +83,7 @@ return (ar.every((i)=>{
 }
 
 function winnertag(c){
+    check = false;
     var root = document.getElementById('root');
     var winn = document.createElement('h1');
     winn.id = "win"
@@ -83,6 +91,7 @@ function winnertag(c){
     root.append(winn)
  }
 function losertag(){
+    check = false;
     var root = document.getElementById('root');
     var lose = document.createElement('h1')
     lose.id = 'los'
