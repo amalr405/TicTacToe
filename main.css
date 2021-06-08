@@ -1,0 +1,70 @@
+body {
+background-color: rgb(197, 185, 185);
+}
+ 
+#header {
+  padding: 10px;
+background-color: rgb(66, 61, 61);
+}
+
+ #main {
+  position: absolute;
+  top: 15%;
+  left: 40%;
+  right: 40%;
+ }
+
+#tictactoe{
+  padding-top: 30px;
+  margin: 0px;
+  display: grid;
+  grid-template: repeat(12 , 1fr)/ 75px 75px 75px;
+  justify-content: center;
+  align-content: center;
+}
+
+.tic {
+  height: 75px;
+  width: 75px;
+  background-color:black;
+  border: 4px solid grey;
+}
+.tic:hover{
+  background-color: rgb(100, 98, 100);
+}
+
+div h1{
+  margin: 10px;
+  padding: 0px;
+  color:white;
+  size: inherit;
+  text-align: center;
+}
+
+
+#reset {
+    grid-column: 1 / -1;
+    width:auto;
+    margin-top: 30px;
+    background-color: rgb(61, 60, 61);
+    color: thistle;
+    font-weight:bolder;
+}
+
+#win {
+  position: absolute;
+  top:450px;
+  font-size: 60px;
+  color: green;
+  padding-top: 20px;
+  padding-left:40px;
+}
+#los {
+  position: absolute;
+  top:450px;
+  color: red;
+  font-size: 60px;
+  padding-top: 20px;
+  padding-left:40px;
+}
+ 
